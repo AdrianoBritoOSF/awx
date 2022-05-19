@@ -1,0 +1,41 @@
+- hosts: "{{ ansible_limit }}"
+  # Don't gather facts since we most likely don't have Python3 yet. (This avoids playbook failure)
+  gather_facts: true
+  tasks:
+
+  # Gather facts in the event that we just installed to a brand new host
+  - name: Gathering Facts
+    setup:
+  
+  # This is used later to determine if netplan is installed
+  - name: "Get package facts"
+    package_facts:
+      manager: "auto"
+  
+  - name: Set the hostname
+    hostname:
+      name: "{{ inventory_hostname_short }}"
+    when: '"rancher" not in ansible_kernel'
+  
+- name: Install default tsafe tools
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    cache_valid_time: 1800
+    state: present
+  vars:
+    packages:
+    # Adding this package so that we always keep python3 up to date even if its already been installed
+    - python3-minimal
+    - curl
+    - vim
+    - wget
+    - htop
+    - tree
+    - iputils-ping
+    - netcat
+    - ntp
+    - jq
+  tags:
+    - packages
+  
