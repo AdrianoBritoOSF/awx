@@ -1,0 +1,15 @@
+all:
+  children:
+    TST01:
+      children:
+        TestS01:
+          children:
+            Dockerhost-S01:
+              vars:
+                ansible_user: ubuntu
+                ansible_become: true
+                # Used to place the correct netplan config
+                tier: "test"
+              hosts:
+                dockerhost.home.lab:
+                  ansible_host: 192.168.97.30
