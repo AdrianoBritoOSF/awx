@@ -11,4 +11,5 @@
    #- hostname
    #- firewalld
    #- ntp-config
+   - docker-setup
    - tools
