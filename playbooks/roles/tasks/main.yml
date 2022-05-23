@@ -1,4 +1,5 @@
 - name: Install default tsafe tools
+  become: yes
   apt:
     name: "{{ packages }}"
     update_cache: yes
