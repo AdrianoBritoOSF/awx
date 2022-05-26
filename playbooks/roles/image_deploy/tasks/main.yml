@@ -1,6 +1,6 @@
 - name: deploy app docker container
   docker_container:
-    image: {{ image_name }}
+    image: "{{ image_name }}"
     name: scorezone
     state: started
     auto_remove: true
@@ -10,7 +10,7 @@
 
 - name: deploy app docker container
   docker_container:
-    image: {{ image_name }}
+    image: "{{ image_name }}"
     name: nginx
     state: started
     auto_remove: true
