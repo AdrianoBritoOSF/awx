@@ -4,9 +4,6 @@
   hosts: all
   become: yes
 
-  tasks:
-
-  - name: Call Roles
-    roles:
-     - docker-setup
-     - tools
+  roles:
+    - docker-setup
+    - tools
