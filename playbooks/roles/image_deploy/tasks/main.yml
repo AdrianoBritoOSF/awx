@@ -16,4 +16,4 @@
     auto_remove: true
     ports:
       - "8080:80"
-  when: target_app == "nginx"
+  when: target_app == "app02"
