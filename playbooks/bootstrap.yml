@@ -1,15 +1,12 @@
 # Playbook to call multiple roles to configure systems
+---
 - name: Configure systems
-  hosts: 192.168.97.30
+  hosts: all
   become: yes
 
   tasks:
 
-- name: Call Roles
-  hosts: servers
-  roles:
-   #- hostname
-   #- firewalld
-   #- ntp-config
-   - docker-setup
-   - tools
+  - name: Call Roles
+    roles:
+     - docker-setup
+     - tools
