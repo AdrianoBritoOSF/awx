@@ -4,8 +4,5 @@
   hosts: all
   become: yes
 
-  tasks:
-
-  - name: Call Roles
-    roles:
-     - image_deploy
+  roles:
+    - image_deploy
