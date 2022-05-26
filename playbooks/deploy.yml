@@ -1,11 +1,9 @@
 # Playbook to deploy docker image
 - name: Deploy
-  hosts: 192.168.97.30
   become: yes
 
   tasks:
 
-- name: Call Roles
-  hosts: servers
-  roles:
-   - image_deploy
+  - name: Call Roles
+    roles:
+     - image_deploy
