@@ -1,5 +1,7 @@
 # Playbook to deploy docker image
+---
 - name: Deploy
+  hosts: all
   become: yes
 
   tasks:
