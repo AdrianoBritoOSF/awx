@@ -7,8 +7,8 @@
     ports:
       - "5000:5000"
   when: target_app == "scorezone"
-  
-  - name: deploy app docker container
+
+- name: deploy app docker container
   docker_container:
     image: {{ image_name }}
     name: nginx
