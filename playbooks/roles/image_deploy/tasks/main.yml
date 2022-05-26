@@ -1,8 +1,19 @@
-- name: deploy nginx docker container
+- name: deploy app docker container
   docker_container:
-    image: nginx:{{ image_version }}
+    image: {{ image_name }}
+    name: scorezone
+    state: started
+    auto_remove: true
+    ports:
+      - "5000:5000"
+  when: target_app == "scorezone"
+  
+  - name: deploy app docker container
+  docker_container:
+    image: {{ image_name }}
     name: nginx
     state: started
     auto_remove: true
     ports:
       - "8080:80"
+  when: target_app == "nginx"
